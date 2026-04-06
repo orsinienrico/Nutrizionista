@@ -70,25 +70,21 @@ border-radius:20px; padding:4px 10px;
 .ptabs { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
 .ptab {
 display:flex; align-items:center; gap:8px;
-padding:9px 13px; border-radius:var(–rs);
-border:1.5px solid var(–border); background:var(–s2);
-cursor:pointer; transition:all .22s; position:relative; overflow:hidden;
+padding:10px 13px; border-radius:var(–rs);
+border:2px solid var(–border); background:var(–s2);
+cursor:pointer; transition:all .22s;
 }
-.ptab::after {
-content:’’; position:absolute; inset:0; opacity:0;
-transition:opacity .22s; pointer-events:none;
-}
-.ptab.c { –a:var(–vc); –ad:var(–vc-dim); }
-.ptab.e { –a:var(–ve); –ad:var(–ve-dim); }
-.ptab::after { background:var(–ad); }
-.ptab.on { border-color:var(–a); }
-.ptab.on::after { opacity:1; }
-.ptab-dot { width:7px; height:7px; border-radius:50%; background:var(–a); box-shadow:0 0 7px var(–a); flex-shrink:0; }
+.ptab.c.on { border-color:var(–vc); background:var(–vc-dim); }
+.ptab.e.on { border-color:var(–ve); background:var(–ve-dim); }
+.ptab-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.ptab.c .ptab-dot { background:var(–vc); box-shadow:0 0 8px var(–vc); }
+.ptab.e .ptab-dot { background:var(–ve); box-shadow:0 0 8px var(–ve); }
 .ptab-info { flex:1; }
-.ptab-name { font-size:13px; font-weight:600; color:var(–t1); position:relative; z-index:1; }
-.ptab.on .ptab-name { color:var(–a); }
-.ptab-sub  { font-size:10px; color:var(–t3); margin-top:1px; position:relative; z-index:1; }
-.ptab-em   { font-size:17px; position:relative; z-index:1; }
+.ptab-name { font-size:13px; font-weight:600; color:var(–t2); }
+.ptab.c.on .ptab-name { color:var(–vc); font-weight:700; }
+.ptab.e.on .ptab-name { color:var(–ve); font-weight:700; }
+.ptab-sub  { font-size:10px; color:var(–t3); margin-top:1px; }
+.ptab-em   { font-size:17px; }
 
 /* ── MAIN ── */
 main { padding:12px 14px 0; }
@@ -100,13 +96,21 @@ scrollbar-width:none; -webkit-overflow-scrolling:touch;
 }
 .day-strip::-webkit-scrollbar { display:none; }
 .dpill {
-flex-shrink:0; padding:6px 13px; border-radius:30px;
-border:1.5px solid var(–border); background:var(–s2);
-font-size:12px; font-weight:500; color:var(–t2);
+flex-shrink:0; padding:7px 14px; border-radius:30px;
+border:2px solid var(–border); background:var(–s2);
+font-size:12px; font-weight:500; color:var(–t3);
 cursor:pointer; transition:all .18s; white-space:nowrap;
 }
-.dpill.on { background:var(–vc-dim); border-color:var(–vc); color:var(–vc); font-weight:600; }
-.pe .dpill.on { background:var(–ve-dim); border-color:var(–ve); color:var(–ve); }
+.dpill.on {
+background:var(–vc); border-color:var(–vc);
+color:#000; font-weight:700;
+box-shadow: 0 0 12px rgba(179,157,250,0.4);
+}
+.pe .dpill.on {
+background:var(–ve); border-color:var(–ve);
+color:#000; font-weight:700;
+box-shadow: 0 0 12px rgba(52,211,153,0.4);
+}
 
 /* ── DAY CARD ── */
 .day-card {
@@ -119,13 +123,18 @@ display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
 .day-note { font-size:12px; color:var(–t2); line-height:1.45; }
 .day-card-right { display:flex; flex-direction:column; gap:4px; flex-shrink:0; }
 .meal-tick {
-font-size:11px; font-weight:500; color:var(–t3);
-background:var(–s3); border:1px solid transparent;
-border-radius:20px; padding:4px 10px; text-align:center;
+font-size:11px; font-weight:600; color:var(–t3);
+background:var(–s3); border:1.5px solid var(–border2);
+border-radius:20px; padding:5px 11px; text-align:center;
 cursor:pointer; transition:all .22s; white-space:nowrap;
 }
-.meal-tick.done { color:var(–vc); background:var(–vc-dim); border-color:var(–vc-mid); text-decoration:line-through; }
-.pe .meal-tick.done { color:var(–ve); background:var(–ve-dim); border-color:var(–ve-mid); }
+.meal-tick.done {
+color:#000; background:var(–vc); border-color:var(–vc);
+text-decoration: line-through;
+}
+.pe .meal-tick.done {
+color:#000; background:var(–ve); border-color:var(–ve);
+}
 
 /* ── WATER BAR ── */
 .water-bar {
@@ -373,6 +382,12 @@ transition:color .18s;
 .nb.on { color:var(–vc); }
 .pe .nb.on { color:var(–ve); }
 .nb-icon { font-size:21px; line-height:1; }
+.nb.on .nb-icon {
+filter: drop-shadow(0 0 6px rgba(179,157,250,0.7));
+}
+.pe .nb.on .nb-icon {
+filter: drop-shadow(0 0 6px rgba(52,211,153,0.7));
+}
 
 /* ── HIGHLIGHT ── */
 mark { background:var(–vc-dim); color:inherit; border-radius:2px; -webkit-text-fill-color:inherit; }
